@@ -35,7 +35,7 @@ using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.EntityFrameworkCore.MySQL;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.IdentityServer.EntityFrameworkCore;
@@ -73,10 +73,10 @@ namespace LY.MicroService.BackendAdmin;
     typeof(AbpCachingManagementApplicationModule),
     typeof(AbpCachingManagementHttpApiModule),
     typeof(AbpCachingManagementStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
-    typeof(AbpIdentityEntityFrameworkCoreModule),// 用户角色权限需要引用包
-    typeof(AbpIdentityServerEntityFrameworkCoreModule), // 客户端权限需要引用包
-    typeof(AbpPermissionManagementDomainOrganizationUnitsModule), // 组织机构权限管理
+    typeof(AbpEntityFrameworkCoreSqlServerModule),
+    typeof(AbpIdentityEntityFrameworkCoreModule),// User role permissions need to reference the package
+    typeof(AbpIdentityServerEntityFrameworkCoreModule), // Client permissions need to reference the package
+    typeof(AbpPermissionManagementDomainOrganizationUnitsModule), // Organization rights management
     typeof(AbpSaasEntityFrameworkCoreModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpPermissionManagementDomainIdentityModule),

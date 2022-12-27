@@ -38,7 +38,7 @@ public class TenantSynchronizer :
     }
 
     /// <summary>
-    /// 租户创建之后需要预置种子数据
+    /// Seed data needs to be preset after workflow creation
     /// </summary>
     /// <param name="eventData"></param>
     /// <returns></returns>
@@ -49,11 +49,11 @@ public class TenantSynchronizer :
             using (CurrentTenant.Change(eventData.Id, eventData.Name))
             {
                 Logger.LogInformation("Migrating the new tenant database with WorkflowManagement...");
-                // 迁移租户数据
+                // Migrate workflow data
                 //await DbSchemaMigrator.MigrateAsync<WorkflowManagementDbContext>(
                 //    (connectionString, builder) =>
                 //    {
-                //        builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                //        builder.UseSqlServer(connectionString);
 
                 //        return new WorkflowManagementDbContext(builder.Options);
                 //    });

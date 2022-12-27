@@ -13,7 +13,7 @@ namespace LY.MicroService.RealtimeMessage.EntityFrameworkCore
             var connectionString = configuration.GetConnectionString("Default");
 
             var builder = new DbContextOptionsBuilder<RealtimeMessageMigrationsDbContext>()
-                .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                .UseSqlServer(connectionString);
 
             return new RealtimeMessageMigrationsDbContext(builder.Options);
         }

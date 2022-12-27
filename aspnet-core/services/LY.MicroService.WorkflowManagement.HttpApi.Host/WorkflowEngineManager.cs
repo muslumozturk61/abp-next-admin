@@ -29,7 +29,7 @@ namespace LY.MicroService.WorkflowManagement;
 //        await _dbSchemaMigrator.MigrateAsync<WorkflowDbContext>(
 //            (connectionString, builder) =>
 //            {
-//                builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+//                builder.UseSqlServer(connectionString);
 
 //                return new WorkflowDbContext(builder.Options);
 //            });
@@ -39,7 +39,7 @@ namespace LY.MicroService.WorkflowManagement;
 //        await _dbSchemaMigrator.MigrateAsync<WorkflowManagementDbContext>(
 //            (connectionString, builder) =>
 //            {
-//                builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+//                builder.UseSqlServer(connectionString);
 
 //                return new WorkflowManagementDbContext(builder.Options);
 //            });

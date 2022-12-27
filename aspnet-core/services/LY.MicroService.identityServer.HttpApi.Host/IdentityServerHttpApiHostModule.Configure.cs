@@ -68,9 +68,9 @@ public partial class IdentityServerHttpApiHostModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(mySqlOptions =>
+            .UseSqlServer(mySqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(mySqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(mySqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -90,21 +90,21 @@ public partial class IdentityServerHttpApiHostModule
 
     private void ConfigureDbContext()
     {
-        // 配置Ef
+        // Configure Ef
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
         });
     }
 
     private void ConfigureJsonSerializer()
     {
-        // 统一时间日期格式
+        // Uniform time and date format
         Configure<AbpJsonOptions>(options =>
         {
             options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
         });
-        // 中文序列化的编码问题
+        // Chinese serialization encoding problem
         Configure<AbpSystemTextJsonSerializerOptions>(options =>
         {
             options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
@@ -124,10 +124,10 @@ public partial class IdentityServerHttpApiHostModule
 
     private void ConfigreExceptionHandling()
     {
-        // 自定义需要处理的异常
+        // Customize exceptions that need to be handled
         Configure<AbpExceptionHandlingOptions>(options =>
         {
-            //  加入需要处理的异常类型
+            //  Add exception types that need to be handled
             options.Handlers.Add<Volo.Abp.Data.AbpDbConcurrencyException>();
             options.Handlers.Add<AbpInitializationException>();
             options.Handlers.Add<ObjectDisposedException>();
@@ -137,10 +137,10 @@ public partial class IdentityServerHttpApiHostModule
             options.Handlers.Add<Microsoft.EntityFrameworkCore.DbUpdateException>();
             options.Handlers.Add<System.Data.DBConcurrencyException>();
         });
-        // 自定义需要发送邮件通知的异常类型
+        // Customize the exception types that need to send email notifications
         Configure<AbpEmailExceptionHandlingOptions>(options =>
         {
-            // 是否发送堆栈信息
+            // Whether to send stack information
             options.SendStackTrace = true;
         });
     }
@@ -150,7 +150,7 @@ public partial class IdentityServerHttpApiHostModule
         Configure<AbpAuditingOptions>(options =>
         {
             options.ApplicationName = ApplicationName;
-            // 是否启用实体变更记录
+            // Whether to enable entity change logging
             var allEntitiesSelectorIsEnabled = configuration["Auditing:AllEntitiesSelector"];
             if (allEntitiesSelectorIsEnabled.IsNullOrWhiteSpace() ||
                 (bool.TryParse(allEntitiesSelectorIsEnabled, out var enabled) && enabled))
@@ -200,7 +200,7 @@ public partial class IdentityServerHttpApiHostModule
 
     private void ConfigureMultiTenancy(IConfiguration configuration)
     {
-        // 多租户
+        // multi-tenant
         Configure<AbpMultiTenancyOptions>(options =>
         {
             options.IsEnabled = true;
@@ -254,10 +254,11 @@ public partial class IdentityServerHttpApiHostModule
 
     private void ConfigureLocalization()
     {
-        // 支持本地化语言类型
+        // Support for localized language types
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+			options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
 
             options.Resources
@@ -271,8 +272,8 @@ public partial class IdentityServerHttpApiHostModule
         {
             var zhHansCultureMapInfo = new CultureMapInfo
             {
-                TargetCulture = "zh-Hans",
-                SourceCultures = new string[] { "zh", "zh_CN", "zh-CN" }
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
             };
 
             options.CulturesMaps.Add(zhHansCultureMapInfo);
@@ -294,7 +295,7 @@ public partial class IdentityServerHttpApiHostModule
                             .ToArray()
                     )
                     .WithAbpExposedHeaders()
-                    // 引用 LINGYUN.Abp.AspNetCore.Mvc.Wrapper 包时可替换为 WithAbpWrapExposedHeaders
+                    // When referencing the LINGYUN.Abp.AspNetCore.Mvc.Wrapper package, it can be replaced with WithAbpWrapExposedHeaders
                     .WithExposedHeaders("_AbpWrapResult", "_AbpDontWrapResult")
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader()

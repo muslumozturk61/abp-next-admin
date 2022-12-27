@@ -110,6 +110,7 @@ namespace LINGYUN.Abp.AspNetCore.Mvc
                     ).AddVirtualJson("/LINGYUN/Abp/AspNetCore/Mvc/Localization/Resources");
 
                 options.Languages.Add(new LanguageInfo("en", "en", "English"));
+				options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
                 options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
             });
 

@@ -1,0 +1,15 @@
+#redis
+docker run --name my-redis -p 6379:6379 -d redis
+
+#elastic search
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+docker network create elastic
+docker run --name es01 --net elastic -p 9200:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+
+
+#rabbitmq
+docker run --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
+
+
+#create project
+labp create MyPackageName.MyProjectName -pk MyCompanyName -o "C:\Temp\MyPackageName" --dbms sqlserver --cs "Data Source=.\\SQLEXPRESS;Initial Catalog=MyProjectName;User Id=root;Password=123456;TrustServerCertificate=True" --no-random-port --as openiddict

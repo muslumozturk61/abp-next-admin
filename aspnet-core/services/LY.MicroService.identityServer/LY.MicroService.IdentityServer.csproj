@@ -13,7 +13,7 @@
 	<ItemGroup>
 		<PackageReference Include="AgileConfig.Client" Version="$(AgileConfigClientPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.Dashboard" Version="$(DotNetCoreCAPPackageVersion)" />
-		<PackageReference Include="DotNetCore.CAP.MySql" Version="$(DotNetCoreCAPPackageVersion)" />
+		<PackageReference Include="DotNetCore.CAP.SqlServer" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="Serilog.AspNetCore" Version="$(SerilogAspNetCorePackageVersion)" />
 		<PackageReference Include="Serilog.Enrichers.Assembly" Version="$(SerilogEnrichersAssemblyPackageVersion)" />
@@ -35,7 +35,7 @@
 		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Identity.AspNetCore" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="$(VoloAbpPackageVersion)" />
@@ -65,5 +65,6 @@
 		<ProjectReference Include="..\..\modules\saas\LINGYUN.Abp.Saas.EntityFrameworkCore\LINGYUN.Abp.Saas.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\modules\tenants\LINGYUN.Abp.MultiTenancy\LINGYUN.Abp.MultiTenancy.csproj" />
 	</ItemGroup>
+
 
 </Project>

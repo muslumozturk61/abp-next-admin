@@ -55,7 +55,7 @@ public partial class AuthServerModule
 
         PreConfigure<AbpSerilogEnrichersUniqueIdOptions>(options =>
         {
-            // 以开放端口区别，应在0-31之间
+            // It is distinguished by open ports, it should be between 0-31
             options.SnowflakeIdOptions.WorkerId = 1;
             options.SnowflakeIdOptions.WorkerIdBits = 5;
             options.SnowflakeIdOptions.DatacenterId = 1;
@@ -67,9 +67,9 @@ public partial class AuthServerModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(mySqlOptions =>
+            .UseSqlServer(mySqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(mySqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(mySqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -100,8 +100,8 @@ public partial class AuthServerModule
         if (environment.IsProduction() &&
             cerConfig.Exists())
         {
-            // 开发环境下存在证书配置
-            // 且证书文件存在则使用自定义的证书文件来启动Ids服务器
+            // There is a certificate configuration in the development environment
+            // And the certificate file exists, use the custom certificate file to start the Ids server
             var cerPath = Path.Combine(environment.ContentRootPath, cerConfig["CerPath"]);
             if (File.Exists(cerPath))
             {
@@ -152,7 +152,7 @@ public partial class AuthServerModule
                     builder.AddEncryptionCertificate(certificate);
                 }
 
-                // 禁用https
+                // disable https
                 builder.UseAspNetCore()
                     .DisableTransportSecurityRequirement();
             });
@@ -163,7 +163,7 @@ public partial class AuthServerModule
     {
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
         });
     }
 
@@ -174,12 +174,12 @@ public partial class AuthServerModule
 
     private void ConfigureJsonSerializer()
     {
-        // 统一时间日期格式
+        // Uniform time and date format
         Configure<AbpJsonOptions>(options =>
         {
             options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
         });
-        // 中文序列化的编码问题
+        // Chinese serialization encoding problem
         Configure<AbpSystemTextJsonSerializerOptions>(options =>
         {
             options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
@@ -201,7 +201,7 @@ public partial class AuthServerModule
     }
     private void ConfigureIdentity(IConfiguration configuration)
     {
-        // 增加配置文件定义,在新建租户时需要
+        // Add configuration file definition, which is required when creating a new tenant
         Configure<IdentityOptions>(options =>
         {
             var identityConfiguration = configuration.GetSection("Identity");
@@ -223,6 +223,7 @@ public partial class AuthServerModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+            options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
 
             options.Resources
@@ -234,8 +235,8 @@ public partial class AuthServerModule
         {
             var zhHansCultureMapInfo = new CultureMapInfo
             {
-                TargetCulture = "zh-Hans",
-                SourceCultures = new string[] { "zh", "zh_CN", "zh-CN" }
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
             };
 
             options.CulturesMaps.Add(zhHansCultureMapInfo);
@@ -248,7 +249,7 @@ public partial class AuthServerModule
         {
             // options.IsEnabledForGetRequests = true;
             options.ApplicationName = ApplicationName;
-            // 是否启用实体变更记录
+            // Whether to enable entity change logging
             var allEntitiesSelectorIsEnabled = configuration["Auditing:AllEntitiesSelector"];
             if (allEntitiesSelectorIsEnabled.IsNullOrWhiteSpace() ||
                 (bool.TryParse(allEntitiesSelectorIsEnabled, out var enabled) && enabled))
@@ -293,7 +294,7 @@ public partial class AuthServerModule
     }
     private void ConfigureMultiTenancy(IConfiguration configuration)
     {
-        // 多租户
+        // multi-tenant
         Configure<AbpMultiTenancyOptions>(options =>
         {
             options.IsEnabled = true;
@@ -326,7 +327,7 @@ public partial class AuthServerModule
                             .ToArray()
                     )
                     .WithAbpExposedHeaders()
-                    // 引用 LINGYUN.Abp.AspNetCore.Mvc.Wrapper 包时可替换为 WithAbpWrapExposedHeaders
+                    // When referencing the LINGYUN.Abp.AspNetCore.Mvc.Wrapper package, it can be replaced with WithAbpWrapExposedHeaders
                     .WithExposedHeaders("_AbpWrapResult", "_AbpDontWrapResult")
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader()

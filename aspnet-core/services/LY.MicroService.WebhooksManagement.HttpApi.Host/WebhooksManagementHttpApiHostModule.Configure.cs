@@ -68,9 +68,9 @@ public partial class WebhooksManagementHttpApiHostModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(sqlOptions =>
+            .UseSqlServer(sqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(sqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(sqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -113,10 +113,10 @@ public partial class WebhooksManagementHttpApiHostModule
         // 配置Ef
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
             //options.Configure(cfg =>
             //{
-            //    cfg.UseMySQL();
+            //    cfg.UseSqlServer();
             //    cfg.DbContextOptions.EnableSensitiveDataLogging();
             //});
         });
@@ -297,13 +297,26 @@ public partial class WebhooksManagementHttpApiHostModule
 
     private void ConfigureLocalization()
     {
-        // 支持本地化语言类型
+        // Support for localized language types
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+            options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
-            // 动态语言支持
+            // Dynamic language support
             options.Resources.AddDynamic();
+        });
+
+        Configure<AbpLocalizationCultureMapOptions>(options =>
+        {
+            var zhHansCultureMapInfo = new CultureMapInfo
+            {
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
+            };
+
+            options.CulturesMaps.Add(zhHansCultureMapInfo);
+            options.UiCulturesMaps.Add(zhHansCultureMapInfo);
         });
     }
 

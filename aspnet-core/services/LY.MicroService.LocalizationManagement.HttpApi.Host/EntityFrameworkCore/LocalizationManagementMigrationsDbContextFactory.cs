@@ -13,7 +13,7 @@ namespace LY.MicroService.LocalizationManagement.EntityFrameworkCore
             var connectionString = configuration.GetConnectionString("Default");
 
             var builder = new DbContextOptionsBuilder<LocalizationManagementMigrationsDbContext>()
-                .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                .UseSqlServer(connectionString);
 
             return new LocalizationManagementMigrationsDbContext(builder.Options);
         }

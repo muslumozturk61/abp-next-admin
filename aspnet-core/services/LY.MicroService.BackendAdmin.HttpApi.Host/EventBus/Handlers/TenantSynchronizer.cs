@@ -107,7 +107,7 @@ public class TenantSynchronizer :
                 await DbSchemaMigrator.MigrateAsync<BackendAdminMigrationsDbContext>(
                     (connectionString, builder) =>
                     {
-                        builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                        builder.UseSqlServer(connectionString);
 
                         return new BackendAdminMigrationsDbContext(builder.Options);
                     });

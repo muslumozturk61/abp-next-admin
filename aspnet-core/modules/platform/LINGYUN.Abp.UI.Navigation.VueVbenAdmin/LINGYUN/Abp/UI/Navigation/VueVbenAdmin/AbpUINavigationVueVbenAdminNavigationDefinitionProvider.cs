@@ -27,27 +27,27 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var dashboard = new ApplicationMenu(
                 name: "Vben Dashboard",
-                displayName: "仪表盘",
+                displayName: "Dashboard",
                 url: "/dashboard",
                 component: "",
-                description: "仪表盘",
+                description: "Dashboard",
                 icon: "ion:grid-outline",
                 redirect: "/dashboard/workbench");
 
             dashboard.AddItem(
                 new ApplicationMenu(
                     name: "Analysis",
-                    displayName: "分析页",
+                    displayName: "Analysis Page",
                     url: "/dashboard/analysis",
                     component: "/dashboard/analysis/index",
-                    description: "分析页"));
+                    description: "Analysis Page"));
             dashboard.AddItem(
                new ApplicationMenu(
                    name: "Workbench",
-                   displayName: "工作台",
+                   displayName: "Workbench",
                    url: "/dashboard/workbench",
                    component: "/dashboard/workbench/index",
-                   description: "工作台"));
+                   description: "Workbench"));
 
 
             return new NavigationDefinition(dashboard);
@@ -57,73 +57,73 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var manage = new ApplicationMenu(
                 name: "Manage",
-                displayName: "管理",
+                displayName: "Manage",
                 url: "/manage",
                 component: "",
-                description: "管理",
+                description: "Manage",
                 icon: "ant-design:control-outlined");
 
             var identity = manage.AddItem(
                 new ApplicationMenu(
                     name: "Identity",
-                    displayName: "身份认证管理",
+                    displayName: "Identity Management",
                     url: "/manage/identity",
                     component: "",
-                    description: "身份认证管理"));
+                    description: "Identity Management"));
             identity.AddItem(
               new ApplicationMenu(
                   name: "User",
-                  displayName: "用户",
+                  displayName: "User",
                   url: "/manage/identity/user",
                   component: "/identity/user/index",
-                  description: "用户"));
+                  description: "User"));
             identity.AddItem(
               new ApplicationMenu(
                   name: "Role",
-                  displayName: "角色",
+                  displayName: "Role",
                   url: "/manage/identity/role",
                   component: "/identity/role/index",
-                  description: "角色"));
+                  description: "Role"));
             identity.AddItem(
               new ApplicationMenu(
                   name: "Claim",
-                  displayName: "身份标识",
+                  displayName: "ID",
                   url: "/manage/identity/claim-types",
                   component: "/identity/claim-types/index",
-                  description: "身份标识",
+                  description: "ID",
                   multiTenancySides: MultiTenancySides.Host));
             identity.AddItem(
               new ApplicationMenu(
                   name: "OrganizationUnits",
-                  displayName: "组织机构",
+                  displayName: "Organization",
                   url: "/manage/identity/organization-units",
                   component: "/identity/organization-units/index",
-                  description: "组织机构"));
+                  description: "Organization"));
             identity.AddItem(
               new ApplicationMenu(
                   name: "SecurityLogs",
-                  displayName: "安全日志",
+                  displayName: "Security Logs",
                   url: "/manage/identity/security-logs",
                   component: "/identity/security-logs/index",
-                  description: "安全日志")
+                  description: "Security Logs")
                 // 此路由需要依赖安全日志特性
                 .SetProperty("requiredFeatures", "AbpAuditing.Logging.SecurityLog"));
 
             manage.AddItem(new ApplicationMenu(
                    name: "AuditLogs",
-                   displayName: "审计日志",
+                   displayName: "Audit Logs",
                    url: "/manage/audit-logs",
                    component: "/auditing/index",
-                   description: "审计日志")
+                   description: "Audit Logs")
                 // 此路由需要依赖审计日志特性
                 .SetProperty("requiredFeatures", "AbpAuditing.Logging.AuditLog"));
 
             manage.AddItem(new ApplicationMenu(
                    name: "Settings",
-                   displayName: "设置",
+                   displayName: "Settings",
                    url: "/manage/settings",
                    component: "/sys/settings/index",
-                   description: "设置")
+                   description: "Settings")
                 // 此路由需要依赖设置管理特性
                 .SetProperty("requiredFeatures", "SettingManagement.Enable"));
 
@@ -142,50 +142,50 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
                 var identityServer = manage.AddItem(
                     new ApplicationMenu(
                         name: "IdentityServer",
-                        displayName: "身份认证服务器",
+                        displayName: "Authentication Server",
                         url: "/manage/identity-server",
                         component: "",
-                        description: "身份认证服务器",
+                        description: "Authentication Server",
                         multiTenancySides: MultiTenancySides.Host));
                 identityServer.AddItem(
                     new ApplicationMenu(
                         name: "Clients",
-                        displayName: "客户端",
+                        displayName: "Clients",
                         url: "/manage/identity-server/clients",
                         component: "/identity-server/clients/index",
-                        description: "客户端",
+                        description: "Clients",
                         multiTenancySides: MultiTenancySides.Host));
                 identityServer.AddItem(
                     new ApplicationMenu(
                         name: "ApiResources",
-                        displayName: "Api 资源",
+                        displayName: "Api Resources",
                         url: "/manage/identity-server/api-resources",
                         component: "/identity-server/api-resources/index",
-                        description: "Api 资源",
+                        description: "Api Resources",
                         multiTenancySides: MultiTenancySides.Host));
                 identityServer.AddItem(
                     new ApplicationMenu(
                         name: "IdentityResources",
-                        displayName: "身份资源",
+                        displayName: "Identity Resources",
                         url: "/manage/identity-server/identity-resources",
                         component: "/identity-server/identity-resources/index",
-                        description: "身份资源",
+                        description: "Identity Resources",
                         multiTenancySides: MultiTenancySides.Host));
                 identityServer.AddItem(
                     new ApplicationMenu(
                         name: "ApiScopes",
-                        displayName: "Api 范围",
+                        displayName: "Api Scope",
                         url: "/manage/identity-server/api-scopes",
                         component: "/identity-server/api-scopes/index",
-                        description: "Api 范围",
+                        description: "Api Scope",
                         multiTenancySides: MultiTenancySides.Host));
                 identityServer.AddItem(
                     new ApplicationMenu(
                         name: "PersistedGrants",
-                        displayName: "持久授权",
+                        displayName: "Persisted Grants",
                         url: "/manage/identity-server/persisted-grants",
                         component: "/identity-server/persisted-grants/index",
-                        description: "持久授权",
+                        description: "Persisted Grants",
                         multiTenancySides: MultiTenancySides.Host));
             }
             else
@@ -193,60 +193,60 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
                 var openIddict = manage.AddItem(
                     new ApplicationMenu(
                         name: "OpenIddict",
-                        displayName: "身份认证服务器",
+                        displayName: "Authentication Server",
                         url: "/manage/openiddict",
                         component: "LAYOUT",
-                        description: "身份认证服务器(OpenIddict)",
+                        description: "Authentication Server(OpenIddict)",
                         multiTenancySides: MultiTenancySides.Host));
                 openIddict.AddItem(
                     new ApplicationMenu(
                         name: "OpenIddictApplications",
-                        displayName: "应用管理",
+                        displayName: "Application Management",
                         url: "/manage/openiddict/applications",
                         component: "/openiddict/applications/index",
-                        description: "应用管理",
+                        description: "Application Management",
                         multiTenancySides: MultiTenancySides.Host));
                 openIddict.AddItem(
                     new ApplicationMenu(
                         name: "OpenIddictAuthorizations",
-                        displayName: "授权管理",
+                        displayName: "Authorization Management",
                         url: "/manage/openiddict/authorizations",
                         component: "/openiddict/authorizations/index",
-                        description: "授权管理",
+                        description: "Authorization Management",
                         multiTenancySides: MultiTenancySides.Host));
                 openIddict.AddItem(
                     new ApplicationMenu(
                         name: "OpenIddictScopes",
-                        displayName: "Api 范围",
+                        displayName: "Api Scope",
                         url: "/manage/openiddict/scopes",
                         component: "/openiddict/scopes/index",
-                        description: "Api 范围",
+                        description: "Api Scope",
                         multiTenancySides: MultiTenancySides.Host));
                 openIddict.AddItem(
                     new ApplicationMenu(
                         name: "OpenIddictTokens",
-                        displayName: "授权令牌",
+                        displayName: "Authorization Token",
                         url: "/manage/openiddict/tokens",
                         component: "/openiddict/tokens/index",
-                        description: "授权令牌",
+                        description: "Authorization Token",
                         multiTenancySides: MultiTenancySides.Host));
             }
 
             manage.AddItem(
                 new ApplicationMenu(
                     name: "Logs",
-                    displayName: "系统日志",
+                    displayName: "System Log",
                     url: "/sys/logs",
                     component: "/sys/logging/index",
-                    description: "系统日志"));
+                    description: "System Log"));
 
             manage.AddItem(
                 new ApplicationMenu(
                     name: "ApiDocument",
-                    displayName: "Api 文档",
+                    displayName: "Api Document",
                     url: "/openapi",
                     component: "IFrame",
-                    description: "Api 文档",
+                    description: "Api Document",
                     multiTenancySides: MultiTenancySides.Host)
                 // TODO: 注意在部署完毕之后手动修改此菜单iframe地址
                 .SetProperty("frameSrc", "http://127.0.0.1:30000/swagger/index.html"));
@@ -254,10 +254,10 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
             manage.AddItem(
                 new ApplicationMenu(
                     name: "Caches",
-                    displayName: "缓存管理",
+                    displayName: "Cache Management",
                     url: "/manage/cache",
                     component: "/caching-management/cache/index",
-                    description: "缓存管理"));
+                    description: "Cache Management"));
 
             return new NavigationDefinition(manage);
         }
@@ -275,18 +275,18 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
             saas.AddItem(
               new ApplicationMenu(
                   name: "Tenants",
-                  displayName: "租户管理",
+                  displayName: "Tenant Management",
                   url: "/saas/tenants",
                   component: "/saas/tenant/index",
-                  description: "租户管理",
+                  description: "Tenant Management",
                   multiTenancySides: MultiTenancySides.Host));
             saas.AddItem(
               new ApplicationMenu(
                   name: "Editions",
-                  displayName: "版本管理",
+                  displayName: "Version Management",
                   url: "/saas/editions",
                   component: "/saas/editions/index",
-                  description: "版本管理",
+                  description: "Version Management",
                   multiTenancySides: MultiTenancySides.Host));
 
             return new NavigationDefinition(saas);
@@ -296,32 +296,32 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var platform = new ApplicationMenu(
                 name: "Platform",
-                displayName: "平台管理",
+                displayName: "Platform Management",
                 url: "/platform",
                 component: "",
-                description: "平台管理",
+                description: "Platform Management",
                 icon: "ep:platform");
             platform.AddItem(
               new ApplicationMenu(
                   name: "DataDictionary",
-                  displayName: "数据字典",
+                  displayName: "Data Dictionary",
                   url: "/platform/data-dic",
                   component: "/platform/dataDic/index",
-                  description: "数据字典"));
+                  description: "Data Dictionary"));
             platform.AddItem(
               new ApplicationMenu(
                   name: "Layout",
-                  displayName: "布局",
+                  displayName: "Layout",
                   url: "/platform/layout",
                   component: "/platform/layout/index",
-                  description: "布局"));
+                  description: "Layout"));
             platform.AddItem(
               new ApplicationMenu(
                   name: "Menu",
-                  displayName: "菜单",
+                  displayName: "Menu",
                   url: "/platform/menu",
                   component: "/platform/menu/index",
-                  description: "菜单"));
+                  description: "Menu"));
 
             return new NavigationDefinition(platform);
         }
@@ -330,43 +330,43 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var apiGateway = new ApplicationMenu(
                 name: "ApiGateway",
-                displayName: "网关管理",
+                displayName: "Gateway Management",
                 url: "/api-gateway",
                 component: "",
-                description: "网关管理",
+                description: "Gateway Management",
                 icon: "ant-design:gateway-outlined",
                 multiTenancySides: MultiTenancySides.Host);
             apiGateway.AddItem(
               new ApplicationMenu(
                   name: "RouteGroup",
-                  displayName: "路由分组",
+                  displayName: "Routing Packet",
                   url: "/api-gateway/group",
                   component: "/api-gateway/group/index",
-                  description: "路由分组",
+                  description: "Routing Packet",
                   multiTenancySides: MultiTenancySides.Host));
             apiGateway.AddItem(
               new ApplicationMenu(
                   name: "GlobalConfiguration",
-                  displayName: "公共配置",
+                  displayName: "Public Configuration",
                   url: "/api-gateway/global",
                   component: "/api-gateway/global/index",
-                  description: "公共配置",
+                  description: "Public Configuration",
                   multiTenancySides: MultiTenancySides.Host));
             apiGateway.AddItem(
               new ApplicationMenu(
                   name: "Route",
-                  displayName: "路由管理",
+                  displayName: "Routing Management",
                   url: "/api-gateway/route",
                   component: "/api-gateway/route/index",
-                  description: "路由管理",
+                  description: "Routing Management",
                   multiTenancySides: MultiTenancySides.Host));
             apiGateway.AddItem(
              new ApplicationMenu(
                  name: "AggregateRoute",
-                 displayName: "聚合路由",
+                 displayName: "Aggregate Routing",
                  url: "/api-gateway/aggregate",
                  component: "/api-gateway/aggregate/index",
-                 description: "聚合路由",
+                 description: "Aggregate Routing",
                  multiTenancySides: MultiTenancySides.Host));
 
             return new NavigationDefinition(apiGateway);
@@ -376,37 +376,37 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var localization = new ApplicationMenu(
                 name: "Localization",
-                displayName: "本地化管理",
+                displayName: "Localization Management",
                 url: "/localization",
                 component: "",
-                description: "本地化管理",
+                description: "Localization Management",
                 icon: "ant-design:translation-outlined",
                 multiTenancySides: MultiTenancySides.Host);
             localization.AddItem(
               new ApplicationMenu(
                   name: "Languages",
-                  displayName: "语言管理",
+                  displayName: "Language Management",
                   url: "/localization/languages",
                   component: "/localization/languages/index",
-                  description: "语言管理",
+                  description: "Language Management",
                   multiTenancySides: MultiTenancySides.Host)
                 );
             localization.AddItem(
               new ApplicationMenu(
                   name: "Resources",
-                  displayName: "资源管理",
+                  displayName: "Resource Management",
                   url: "/localization/resources",
                   component: "/localization/resources/index",
-                  description: "资源管理",
+                  description: "Resource Management",
                   multiTenancySides: MultiTenancySides.Host)
                 );
             localization.AddItem(
               new ApplicationMenu(
                   name: "Texts",
-                  displayName: "文档管理",
+                  displayName: "Document Management",
                   url: "/localization/texts",
                   component: "/localization/texts/index",
-                  description: "文档管理",
+                  description: "Document Management",
                   multiTenancySides: MultiTenancySides.Host)
                 );
 
@@ -417,25 +417,25 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var oss = new ApplicationMenu(
                 name: "OssManagement",
-                displayName: "对象存储",
+                displayName: "Object Storage",
                 url: "/oss",
                 component: "",
-                description: "对象存储",
+                description: "Object Storage",
                 icon: "ant-design:file-twotone");
             oss.AddItem(
               new ApplicationMenu(
                   name: "Containers",
-                  displayName: "容器管理",
+                  displayName: "Container Management",
                   url: "/oss/containers",
                   component: "/oss-management/containers/index",
-                  description: "容器管理"));
+                  description: "Container Management"));
             oss.AddItem(
               new ApplicationMenu(
                   name: "Objects",
-                  displayName: "文件管理",
+                  displayName: "File Management",
                   url: "/oss/objects",
                   component: "/oss-management/objects/index",
-                  description: "文件管理"));
+                  description: "File Management"));
 
             return new NavigationDefinition(oss);
         }
@@ -444,25 +444,25 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var task = new ApplicationMenu(
                 name: "TaskManagement",
-                displayName: "任务调度平台",
+                displayName: "Task Scheduling Platform",
                 url: "/task-management",
                 component: "",
-                description: "任务调度平台",
+                description: "Task Scheduling Platform",
                 icon: "bi:list-task");
             task.AddItem(
               new ApplicationMenu(
                   name: "BackgroundJobs",
-                  displayName: "任务管理",
+                  displayName: "Task Management",
                   url: "/task-management/background-jobs",
                   component: "/task-management/background-jobs/index",
-                  description: "任务管理"));
+                  description: "Task Management"));
             task.AddItem(
               new ApplicationMenu(
                   name: "BackgroundJobInfoDetail",
-                  displayName: "任务详情",
+                  displayName: "Task Details",
                   url: "/task-management/background-jobs/:id",
                   component: "/task-management/background-jobs/components/BackgroundJobInfoDetail",
-                  description: "任务详情")
+                  description: "Task Details")
               .SetProperty("hideMenu", "true")
               .SetProperty("hideTab", "true"));
 
@@ -482,18 +482,18 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
             webhooks.AddItem(
               new ApplicationMenu(
                   name: "Subscriptions",
-                  displayName: "管理订阅",
+                  displayName: "Manage Subscription",
                   url: "/webhooks/subscriptions",
                   component: "/webhooks/subscriptions/index",
-                  description: "管理订阅",
+                  description: "Manage Subscription",
                   multiTenancySides: MultiTenancySides.Host));
             webhooks.AddItem(
               new ApplicationMenu(
                   name: "SendAttempts",
-                  displayName: "管理记录",
+                  displayName: "Management Records",
                   url: "/webhooks/send-attempts",
                   component: "/webhooks/send-attempts/index",
-                  description: "管理记录",
+                  description: "Management Records",
                   multiTenancySides: MultiTenancySides.Host));
 
             return new NavigationDefinition(webhooks);
@@ -503,18 +503,18 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var messages = new ApplicationMenu(
                 name: "Messages",
-                displayName: "消息管理",
+                displayName: "Message Management",
                 url: "/messages",
                 component: "",
-                description: "消息管理",
+                description: "Message Management",
                 icon: "ant-design:message-outlined");
             messages.AddItem(
               new ApplicationMenu(
                   name: "Notifications",
-                  displayName: "通知管理",
+                  displayName: "Notification Management",
                   url: "/messages/notifications",
                   component: "/messages/notifications/index",
-                  description: "通知管理"));
+                  description: "Notification Management"));
 
             return new NavigationDefinition(messages);
         }
@@ -523,19 +523,19 @@ namespace LINGYUN.Abp.UI.Navigation.VueVbenAdmin
         {
             var textTemplating = new ApplicationMenu(
                 name: "Templates",
-                displayName: "模板管理",
+                displayName: "Template Management",
                 url: "/text-templating",
                 component: "",
-                description: "模板管理",
+                description: "Template Management",
                 icon: "eos-icons:templates-outlined",
                 multiTenancySides: MultiTenancySides.Host);
             textTemplating.AddItem(
               new ApplicationMenu(
                   name: "TextTemplates",
-                  displayName: "文本模板",
+                  displayName: "Text Template",
                   url: "/text-templating/text-templates",
                   component: "/text-templating/templates/index",
-                  description: "文本模板",
+                  description: "Text Template",
                   multiTenancySides: MultiTenancySides.Host));
 
             return new NavigationDefinition(textTemplating);

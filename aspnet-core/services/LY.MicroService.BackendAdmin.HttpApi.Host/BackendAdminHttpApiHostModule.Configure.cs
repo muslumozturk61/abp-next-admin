@@ -69,9 +69,9 @@ public partial class BackendAdminHttpApiHostModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(mySqlOptions =>
+            .UseSqlServer(mySqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(mySqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(mySqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -86,7 +86,7 @@ public partial class BackendAdminHttpApiHostModule
         // 配置Ef
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
         });
     }
 
@@ -253,6 +253,7 @@ public partial class BackendAdminHttpApiHostModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+			options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
 
             options.Resources
@@ -262,13 +263,14 @@ public partial class BackendAdminHttpApiHostModule
                 .AddLanguagesMapOrUpdate(
                     "vue-admin-element-ui",
                     new NameValue("zh-Hans", "zh"),
-                    new NameValue("en", "en"));
+                    new NameValue("en", "en"),
+					new NameValue("tr-TR", "tr"));
 
-            // vben admin 语言映射
+            // vben admin language mapping
             options
                 .AddLanguagesMapOrUpdate(
                     "vben-admin-ui",
-                    new NameValue("zh_CN", "zh-Hans"));
+                    new NameValue("tr_TR", "tr-TR"));
 
             options.Resources.AddDynamic();
         });
@@ -277,8 +279,8 @@ public partial class BackendAdminHttpApiHostModule
         {
             var zhHansCultureMapInfo = new CultureMapInfo
             {
-                TargetCulture = "zh-Hans",
-                SourceCultures = new string[] { "zh", "zh_CN", "zh-CN" }
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
             };
 
             options.CulturesMaps.Add(zhHansCultureMapInfo);

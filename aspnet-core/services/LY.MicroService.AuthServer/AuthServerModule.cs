@@ -27,7 +27,7 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.EntityFrameworkCore.MySQL;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.AspNetCore;
@@ -48,7 +48,7 @@ namespace LY.MicroService.AuthServer;
     typeof(AbpAspNetCoreMvcUiBasicThemeModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCoreSqlServerModule),
     typeof(AbpIdentityEntityFrameworkCoreModule),
     typeof(AbpIdentityApplicationModule),
     typeof(AbpIdentityAspNetCoreModule),
@@ -65,7 +65,7 @@ namespace LY.MicroService.AuthServer;
     typeof(AbpFeatureManagementEntityFrameworkCoreModule),
     typeof(AbpSaasEntityFrameworkCoreModule),
     typeof(AbpDataDbMigratorModule),
-    typeof(AbpAuditLoggingElasticsearchModule), // 放在 AbpIdentity 模块之后,避免被覆盖
+    typeof(AbpAuditLoggingElasticsearchModule), // Put it after the AbpIdentity module to avoid being overwritten
     typeof(AbpAspNetCoreHttpOverridesModule),
     typeof(AbpLocalizationCultureMapModule),
     typeof(AbpCAPEventBusModule),

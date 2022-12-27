@@ -39,7 +39,7 @@ public class TenantSynchronizer :
     }
 
     /// <summary>
-    /// 租户创建之后需要预置种子数据
+    /// Seed data needs to be preset after tenant creation
     /// </summary>
     /// <param name="eventData"></param>
     /// <returns></returns>
@@ -50,11 +50,11 @@ public class TenantSynchronizer :
             using (CurrentTenant.Change(eventData.Id, eventData.Name))
             {
                 Logger.LogInformation("Migrating the new tenant database with WebhooksManagement...");
-                // 迁移租户数据
+                // Migrate tenant data
                 await DbSchemaMigrator.MigrateAsync<WebhooksManagementDbContext>(
                     (connectionString, builder) =>
                     {
-                        builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                        builder.UseSqlServer(connectionString);
 
                         return new WebhooksManagementDbContext(builder.Options);
                     });

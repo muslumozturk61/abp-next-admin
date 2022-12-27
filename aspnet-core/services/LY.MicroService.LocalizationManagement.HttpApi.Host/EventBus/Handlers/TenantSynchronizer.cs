@@ -42,7 +42,7 @@ namespace LY.MicroService.LocalizationManagement.EventBus.Handlers
                     await DbSchemaMigrator.MigrateAsync<LocalizationManagementMigrationsDbContext>(
                         (connectionString, builder) =>
                         {
-                            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                            builder.UseSqlServer(connectionString);
 
                             return new LocalizationManagementMigrationsDbContext(builder.Options);
                         });

@@ -2,7 +2,7 @@
 cls
 chcp 65001
 
-echo. 启动内部网关
+echo. Start the internal gateway
 
 cd ..\gateways\internal\LINGYUN.MicroService.Internal.ApiGateway\src\LINGYUN.MicroService.Internal.ApiGateway\
 

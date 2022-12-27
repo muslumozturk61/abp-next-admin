@@ -3,8 +3,11 @@ using System;
 using LY.MicroService.LocalizationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
+
+#nullable disable
 
 namespace LY.MicroService.LocalizationManagement.Migrations
 {
@@ -15,115 +18,117 @@ namespace LY.MicroService.LocalizationManagement.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.MySql)
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
+                .HasAnnotation("ProductVersion", "6.0.12")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("LINGYUN.Abp.LocalizationManagement.Language", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("datetime2")
                         .HasColumnName("CreationTime");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("CreatorId");
 
                     b.Property<string>("CultureName")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(20)")
                         .HasColumnName("CultureName");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(64)")
                         .HasColumnName("DisplayName");
 
                     b.Property<bool>("Enable")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("bit")
                         .HasDefaultValue(true);
 
                     b.Property<string>("FlagIcon")
                         .HasMaxLength(30)
-                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(30)")
                         .HasColumnName("FlagIcon");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("datetime2")
                         .HasColumnName("LastModificationTime");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
                     b.Property<string>("UiCultureName")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(20)")
                         .HasColumnName("UiCultureName");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CultureName");
 
-                    b.ToTable("AbpLocalizationLanguages");
+                    b.ToTable("AbpLocalizationLanguages", (string)null);
                 });
 
             modelBuilder.Entity("LINGYUN.Abp.LocalizationManagement.Resource", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("datetime2")
                         .HasColumnName("CreationTime");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("CreatorId");
 
                     b.Property<string>("Description")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(64)")
                         .HasColumnName("Description");
 
                     b.Property<string>("DisplayName")
                         .HasMaxLength(64)
-                        .HasColumnType("varchar(64) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(64)")
                         .HasColumnName("DisplayName");
 
                     b.Property<bool>("Enable")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("bit")
                         .HasDefaultValue(true);
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("datetime2")
                         .HasColumnName("LastModificationTime");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("Name");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name");
 
-                    b.ToTable("AbpLocalizationResources");
+                    b.ToTable("AbpLocalizationResources", (string)null);
                 });
 
             modelBuilder.Entity("LINGYUN.Abp.LocalizationManagement.Text", b =>
@@ -132,31 +137,33 @@ namespace LY.MicroService.LocalizationManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<string>("CultureName")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(20)")
                         .HasColumnName("CultureName");
 
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasMaxLength(512)
-                        .HasColumnType("varchar(512) CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(512)")
                         .HasColumnName("Key");
 
                     b.Property<string>("ResourceName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Value")
                         .HasMaxLength(2048)
-                        .HasColumnType("longtext CHARACTER SET utf8mb4")
+                        .HasColumnType("nvarchar(2048)")
                         .HasColumnName("Value");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Key");
 
-                    b.ToTable("AbpLocalizationTexts");
+                    b.ToTable("AbpLocalizationTexts", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -13,7 +13,7 @@ public class TaskManagementMigrationsDbContextFactory : IDesignTimeDbContextFact
         var connectionString = configuration.GetConnectionString("TaskManagement");
 
         var builder = new DbContextOptionsBuilder<TaskManagementMigrationsDbContext>()
-            .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            .UseSqlServer(connectionString);
 
         return new TaskManagementMigrationsDbContext(builder.Options);
     }

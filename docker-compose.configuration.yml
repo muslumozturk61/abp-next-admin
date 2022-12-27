@@ -4,13 +4,13 @@ services:
   admin-service:
     environment:
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentity=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentityServer=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpAuditLogging=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentity="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentityServer="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpAuditLogging="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - Encryption__PassPhrase=s46c5q55nxpeS8Ra
       - Encryption__InitVector=s83ng0abvd02js84
       - Encryption__Salt=sf&5)s3#
@@ -32,14 +32,14 @@ services:
   identity-server-admin:
     environment:
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentity=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentityServer=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpAuditLogging=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpFeatureManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentity="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentityServer="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpAuditLogging="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpFeatureManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - Encryption__PassPhrase=s46c5q55nxpeS8Ra
       - Encryption__InitVector=s83ng0abvd02js84
       - Encryption__Salt=sf&5)s3#
@@ -61,12 +61,12 @@ services:
   localization-service:
     environment:
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpLocalizationManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpAuditLogging=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpLocalizationManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpAuditLogging="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - Encryption__PassPhrase=s46c5q55nxpeS8Ra
       - Encryption__InitVector=s83ng0abvd02js84
       - Encryption__Salt=sf&5)s3#
@@ -88,12 +88,12 @@ services:
   platform-service:
     environment:
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AppPlatform=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpAuditLogging=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AppPlatform="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpAuditLogging="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - RemoteServices__AbpIdentity__BaseUrl=http://127.0.0.1:30015/
       - RemoteServices__AbpIdentity__IdentityClient=InternalServiceClient
       - IdentityClients__InternalServiceClient__Authority=http://127.0.0.1:44385/
@@ -126,11 +126,11 @@ services:
     environment:
       - App__CorsOrigins=http://127.0.0.1:40000,http://127.0.0.1:30000
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=Messages;User Id=root;Password=123456
-      - ConnectionStrings__MessageService=Server=127.0.0.1;Database=Messages;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=Messages;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__MessageService="Data Source=.\\SQLEXPRESS;Initial Catalog=Messages;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - Encryption__PassPhrase=s46c5q55nxpeS8Ra
       - Encryption__InitVector=s83ng0abvd02js84
       - Encryption__Salt=sf&5)s3#
@@ -148,7 +148,7 @@ services:
       - Redis__InstanceName=LINGYUN.Abp.Application
       - AuthServer__Authority=http://127.0.0.1:44385/
       - AuthServer__ApiName=lingyun-abp-application
-      - Hangfire__MySql__Connection=Server=127.0.0.1;Database=Messages;User Id=root;Password=123456;Allow User Variables=true
+      - Hangfire__MySql__Connection="Data Source=.\\SQLEXPRESS;Initial Catalog=Messages;User Id=root;Password=123456;TrustServerCertificate=True"
       - Hangfire__Dashboard__WhiteList=127.0.0.1
       - Notifications__WeChat__WeApp__DefaultWeAppState=formal
 
@@ -157,14 +157,14 @@ services:
       - App__SelfUrl=http://127.0.0.1:44385/
       - App__CorsOrigins=http://127.0.0.1:9527,http://127.0.0.1:9528,http://127.0.0.1:40000,http://127.0.0.1:30000
       - App__TrackingEntitiesChanged=true
-      - ConnectionStrings__Default=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentity=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpIdentityServer=Server=127.0.0.1;Database=IdentityServer;User Id=root;Password=123456
-      - ConnectionStrings__AbpAuditLogging=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpTenantManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpSettingManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpPermissionManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
-      - ConnectionStrings__AbpFeatureManagement=Server=127.0.0.1;Database=Platform;User Id=root;Password=123456
+      - ConnectionStrings__Default="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentity="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpIdentityServer="Data Source=.\\SQLEXPRESS;Initial Catalog=IdentityServer;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpAuditLogging="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpTenantManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpSettingManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpPermissionManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
+      - ConnectionStrings__AbpFeatureManagement="Data Source=.\\SQLEXPRESS;Initial Catalog=Platform;User Id=root;Password=123456;TrustServerCertificate=True"
       - Certificates__CerPath=./idsrv4.pfx
       - Certificates__Password=csfvw2-2r0ff41
       - Encryption__PassPhrase=s46c5q55nxpeS8Ra

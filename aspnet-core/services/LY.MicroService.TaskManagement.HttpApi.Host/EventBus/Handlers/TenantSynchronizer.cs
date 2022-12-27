@@ -88,11 +88,11 @@ namespace LY.MicroService.TaskManagement.EventBus.Handlers
                 using (CurrentTenant.Change(eventData.Id, eventData.Name))
                 {
                     Logger.LogInformation("Migrating the new tenant database with localization..");
-                    // 迁移租户数据
+                    // Migrate tenant data
                     await DbSchemaMigrator.MigrateAsync<TaskManagementMigrationsDbContext>(
                         (connectionString, builder) =>
                         {
-                            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                            builder.UseSqlServer(connectionString);
 
                             return new TaskManagementMigrationsDbContext(builder.Options);
                         });

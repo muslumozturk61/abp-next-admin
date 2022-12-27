@@ -12,8 +12,8 @@
 	<ItemGroup>
 		<PackageReference Include="AgileConfig.Client" Version="$(AgileConfigClientPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.Dashboard" Version="$(DotNetCoreCAPPackageVersion)" />
-		<PackageReference Include="DotNetCore.CAP.MySql" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="$(DotNetCoreCAPPackageVersion)" />
+		<PackageReference Include="DotNetCore.CAP.SqlServer" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftPackageVersion)">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -33,7 +33,7 @@
 		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(VoloAbpPackageVersion)" />
@@ -79,5 +79,9 @@
 		<ProjectReference Include="..\..\modules\text-templating\LINGYUN.Abp.TextTemplating.Application\LINGYUN.Abp.TextTemplating.Application.csproj" />
 		<ProjectReference Include="..\..\modules\text-templating\LINGYUN.Abp.TextTemplating.EntityFrameworkCore\LINGYUN.Abp.TextTemplating.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\modules\text-templating\LINGYUN.Abp.TextTemplating.HttpApi\LINGYUN.Abp.TextTemplating.HttpApi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 </Project>

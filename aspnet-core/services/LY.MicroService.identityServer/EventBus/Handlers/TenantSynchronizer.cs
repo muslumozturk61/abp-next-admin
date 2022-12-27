@@ -53,11 +53,11 @@ public class TenantSynchronizer : IDistributedEventHandler<CreateEventData>, ITr
         using (CurrentTenant.Change(eventData.Id, eventData.Name))
         {
             Logger.LogInformation("Migrating the new tenant database with AuthServer...");
-            // 迁移租户数据
+            // Migrate tenant data
             await DbSchemaMigrator.MigrateAsync<IdentityServertMigrationsDbContext>(
                 (connectionString, builder) =>
                 {
-                    builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                    builder.UseSqlServer(connectionString);
 
                     return new IdentityServertMigrationsDbContext(builder.Options);
                 });
@@ -76,7 +76,7 @@ public class TenantSynchronizer : IDistributedEventHandler<CreateEventData>, ITr
 
     private async Task SeedTenantDefaultRoleAsync(Guid tenantId)
     {
-        // 默认用户
+        // default user
         var roleId = GuidGenerator.Create();
         var defaultRole = new IdentityRole(roleId, "Users", tenantId)
         {
@@ -86,7 +86,7 @@ public class TenantSynchronizer : IDistributedEventHandler<CreateEventData>, ITr
         };
         (await IdentityRoleManager.CreateAsync(defaultRole)).CheckErrors();
 
-        // 所有用户都应该具有查询用户权限, 用于IM场景
+        // All users should have query user permission, for IM scenarios
         await PermissionDataSeeder.SeedAsync(
             RolePermissionValueProvider.ProviderName,
             defaultRole.Name,
@@ -129,7 +129,7 @@ public class TenantSynchronizer : IDistributedEventHandler<CreateEventData>, ITr
 
             tenantAdminUser.AddRole(tenantAdminRoleId);
 
-            // 创建租户管理用户
+            // Create a tenant management user
             (await IdentityUserManager.CreateAsync(tenantAdminUser)).CheckErrors();
             (await IdentityUserManager.AddPasswordAsync(tenantAdminUser, eventData.AdminPassword)).CheckErrors();
         }

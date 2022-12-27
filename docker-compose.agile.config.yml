@@ -5,8 +5,8 @@ services:
     image: kklldog/agile_config:latest
     environment:
       - adminConsole=true
-      - db:provider=mysql
-      - db:conn=Server=127.0.0.1;Database=agile;User Id=root;Password=123456;Character Set=utf8mb4
+      - db:provider=sqlserver
+      - db:conn="Data Source=.\SQLEXPRESS;Initial Catalog=Agile;User Id=root;Password=123456;TrustServerCertificate=True"
     ports:
       - "5000:5000"
     volumes:

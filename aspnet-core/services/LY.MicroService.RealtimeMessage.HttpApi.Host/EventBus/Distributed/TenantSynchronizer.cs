@@ -55,7 +55,7 @@ namespace LY.MicroService.RealtimeMessage.EventBus.Distributed
                     await DbSchemaMigrator.MigrateAsync<RealtimeMessageMigrationsDbContext>(
                         (connectionString, builder) =>
                         {
-                            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                            builder.UseSqlServer(connectionString);
 
                             return new RealtimeMessageMigrationsDbContext(builder.Options);
                         });

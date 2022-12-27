@@ -57,7 +57,7 @@ public class TenantSynchronizer : IDistributedEventHandler<CreateEventData>, ITr
             await DbSchemaMigrator.MigrateAsync<AuthServerMigrationsDbContext>(
                 (connectionString, builder) =>
                 {
-                    builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                    builder.UseSqlServer(connectionString);
 
                     return new AuthServerMigrationsDbContext(builder.Options);
                 });

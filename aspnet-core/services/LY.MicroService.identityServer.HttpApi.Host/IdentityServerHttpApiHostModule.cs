@@ -23,7 +23,7 @@ using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.EntityFrameworkCore.MySQL;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
@@ -44,7 +44,7 @@ namespace LY.MicroService.IdentityServer;
     typeof(LINGYUN.Abp.IdentityServer.AbpIdentityServerHttpApiModule),
     typeof(LINGYUN.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule),
     typeof(LINGYUN.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCoreSqlServerModule),
     typeof(AbpSaasEntityFrameworkCoreModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpPermissionManagementEntityFrameworkCoreModule),

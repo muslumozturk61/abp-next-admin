@@ -1,12 +1,12 @@
 ﻿<Project>
 	<PropertyGroup>
-		<VoloAbpPackageVersion>6.0.1</VoloAbpPackageVersion>
-		<LINGYUNAbpPackageVersion>6.0.1</LINGYUNAbpPackageVersion>
+		<VoloAbpPackageVersion>6.0.2</VoloAbpPackageVersion>
+		<LINGYUNAbpPackageVersion>6.0.2</LINGYUNAbpPackageVersion>
 		<DaprPackageVersion>1.8.0</DaprPackageVersion>
 		<DotNetCoreCAPPackageVersion>6.0.1</DotNetCoreCAPPackageVersion>
 		<AliyunSDKPackageVersion>1.5.10</AliyunSDKPackageVersion>
 		<AliyunOSSSDKPackageVersion>2.13.0</AliyunOSSSDKPackageVersion>
-		<AgileConfigClientPackageVersion>1.2.1.5</AgileConfigClientPackageVersion>
+		<AgileConfigClientPackageVersion>1.6.10</AgileConfigClientPackageVersion>
 		<HangfireMySqlStoragePackageVersion>2.0.3</HangfireMySqlStoragePackageVersion>
 		<HangfireMSSQLStoragePackageVersion>1.7.27</HangfireMSSQLStoragePackageVersion>
 		<NESTPackageVersion>7.15.1</NESTPackageVersion>

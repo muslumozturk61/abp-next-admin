@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\..\configureawait.props" />
 	<Import Project="..\..\..\common.props" />
@@ -6,7 +6,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<RootNamespace />
-		<Description>Cap分布式事件总线</Description>
+		<Description>Cap Distributed Event Bus</Description>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>$(SolutionDir)modules\common\LINGYUN.Abp.EventBus.CAP\LINGYUN.Abp.EventBus.CAP.xml</DocumentationFile>
 	</PropertyGroup>

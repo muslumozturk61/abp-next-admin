@@ -22,7 +22,7 @@ using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.EntityFrameworkCore.MySQL;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
@@ -38,7 +38,7 @@ namespace LY.MicroService.LocalizationManagement
         typeof(AbpLocalizationManagementApplicationModule),
         typeof(AbpLocalizationManagementHttpApiModule),
         typeof(AbpLocalizationManagementEntityFrameworkCoreModule),
-        typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpSaasEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),

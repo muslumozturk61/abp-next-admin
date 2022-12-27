@@ -15,7 +15,7 @@ public class WebhooksManagementMigrationsDbContextFactory : IDesignTimeDbContext
         DbContextOptionsBuilder<WebhooksManagementMigrationsDbContext> builder = null;
 
         builder = new DbContextOptionsBuilder<WebhooksManagementMigrationsDbContext>()
-            .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            .UseSqlServer(connectionString);
 
         return new WebhooksManagementMigrationsDbContext(builder.Options);
     }

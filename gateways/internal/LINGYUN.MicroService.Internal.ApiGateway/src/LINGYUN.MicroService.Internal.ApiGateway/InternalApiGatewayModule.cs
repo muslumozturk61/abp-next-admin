@@ -64,7 +64,7 @@ namespace LINGYUN.MicroService.Internal.ApiGateway
                 ctx => ctx.Request.Path.ToString().StartsWith("/api/ApiGateway/Basic/"),
                 appNext =>
                 {
-                    // 仅针对属于网关自己的控制器进入MVC管道
+                    // Enter the MVC pipeline only for controllers that belong to the gateway itself
                     appNext.UseRouting();
                     appNext.UseConfiguredEndpoints();
                 });

@@ -63,9 +63,9 @@ public partial class LocalizationManagementHttpApiHostModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(mySqlOptions =>
+            .UseSqlServer(mySqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(mySqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(mySqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -80,7 +80,7 @@ public partial class LocalizationManagementHttpApiHostModule
         // 配置Ef
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
         });
     }
 
@@ -206,6 +206,7 @@ public partial class LocalizationManagementHttpApiHostModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+			options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
 
             options.Resources.AddDynamic();
@@ -215,8 +216,8 @@ public partial class LocalizationManagementHttpApiHostModule
         {
             var zhHansCultureMapInfo = new CultureMapInfo
             {
-                TargetCulture = "zh-Hans",
-                SourceCultures = new string[] { "zh", "zh_CN", "zh-CN" }
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
             };
 
             options.CulturesMaps.Add(zhHansCultureMapInfo);

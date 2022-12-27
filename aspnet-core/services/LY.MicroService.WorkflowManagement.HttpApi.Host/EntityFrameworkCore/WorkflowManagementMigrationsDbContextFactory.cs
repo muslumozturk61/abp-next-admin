@@ -13,7 +13,7 @@ public class WorkflowManagementMigrationsDbContextFactory : IDesignTimeDbContext
         var connectionString = configuration.GetConnectionString("WorkflowManagement");
 
         var builder = new DbContextOptionsBuilder<WorkflowManagementMigrationsDbContext>()
-            .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            .UseSqlServer(connectionString);
 
         return new WorkflowManagementMigrationsDbContext(builder.Options);
     }

@@ -65,9 +65,9 @@ public partial class TaskManagementHttpApiHostModule
         PreConfigure<CapOptions>(options =>
         {
             options
-            .UseMySql(mySqlOptions =>
+            .UseSqlServer(mySqlOptions =>
             {
-                configuration.GetSection("CAP:MySql").Bind(mySqlOptions);
+                configuration.GetSection("CAP:SqlServer").Bind(mySqlOptions);
             })
             .UseRabbitMQ(rabbitMQOptions =>
             {
@@ -122,21 +122,21 @@ public partial class TaskManagementHttpApiHostModule
 
     private void ConfigureDbContext()
     {
-        // 配置Ef
+        // Configure Ef
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseMySQL();
+            options.UseSqlServer();
         });
     }
 
     private void ConfigureJsonSerializer()
     {
-        // 解决某些不支持类型的序列化
+        // Fix serialization of certain unsupported types
         Configure<AbpJsonOptions>(options =>
         {
             options.DefaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
         });
-        // 中文序列化的编码问题
+        // Chinese serialization encoding problem
         Configure<AbpSystemTextJsonSerializerOptions>(options =>
         {
             options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
@@ -145,10 +145,10 @@ public partial class TaskManagementHttpApiHostModule
 
     private void ConfigureExceptionHandling()
     {
-        // 自定义需要处理的异常
+        // Customize exceptions that need to be handled
         Configure<AbpExceptionHandlingOptions>(options =>
         {
-            //  加入需要处理的异常类型
+            //  Add exception types that need to be handled
             options.Handlers.Add<Volo.Abp.Data.AbpDbConcurrencyException>();
             options.Handlers.Add<AbpInitializationException>();
             options.Handlers.Add<OutOfMemoryException>();
@@ -156,13 +156,13 @@ public partial class TaskManagementHttpApiHostModule
             options.Handlers.Add<Microsoft.EntityFrameworkCore.DbUpdateException>();
             options.Handlers.Add<System.Data.DBConcurrencyException>();
         });
-        // 自定义需要发送邮件通知的异常类型
+        // Customize the exception types that need to send email notifications
         Configure<AbpEmailExceptionHandlingOptions>(options =>
         {
-            // 是否发送堆栈信息
+            // Whether to send stack information
             options.SendStackTrace = true;
-            // 未指定异常接收者的默认接收邮件
-            // 指定自己的邮件地址
+            // Default recipient emails for unspecified exception recipients
+            // Specify your own email address
         });
     }
 
@@ -171,7 +171,7 @@ public partial class TaskManagementHttpApiHostModule
         Configure<AbpAuditingOptions>(options =>
         {
             options.ApplicationName = ApplicationName;
-            // 是否启用实体变更记录
+            // Whether to enable entity change logging
             var allEntitiesSelectorIsEnabled = configuration["Auditing:AllEntitiesSelector"];
             if (allEntitiesSelectorIsEnabled.IsNullOrWhiteSpace() ||
                 (bool.TryParse(allEntitiesSelectorIsEnabled, out var enabled) && enabled))
@@ -206,7 +206,7 @@ public partial class TaskManagementHttpApiHostModule
 
     private void ConfigureMultiTenancy(IConfiguration configuration)
     {
-        // 多租户
+        // multi-tenant
         Configure<AbpMultiTenancyOptions>(options =>
         {
             options.IsEnabled = true;
@@ -260,12 +260,13 @@ public partial class TaskManagementHttpApiHostModule
 
     private void ConfigureLocalization()
     {
-        // 支持本地化语言类型
+        // Support for localized language types
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
+            options.Languages.Add(new LanguageInfo("tr-TR", "tr-TR", "Türkçe"));
             options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
-            // 动态语言支持
+            // Dynamic language support
             options.Resources.AddDynamic();
         });
 
@@ -273,8 +274,8 @@ public partial class TaskManagementHttpApiHostModule
         {
             var zhHansCultureMapInfo = new CultureMapInfo
             {
-                TargetCulture = "zh-Hans",
-                SourceCultures = new string[] { "zh", "zh_CN", "zh-CN" }
+                TargetCulture = "tr-TR",
+                SourceCultures = new string[] { "tr", "tr_TR", "tr-TR" }
             };
 
             options.CulturesMaps.Add(zhHansCultureMapInfo);

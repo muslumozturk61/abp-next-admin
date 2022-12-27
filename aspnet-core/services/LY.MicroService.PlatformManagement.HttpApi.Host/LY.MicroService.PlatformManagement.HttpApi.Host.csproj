@@ -8,7 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="AgileConfig.Client" Version="$(AgileConfigClientPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.Dashboard" Version="$(DotNetCoreCAPPackageVersion)" />
-		<PackageReference Include="DotNetCore.CAP.MySql" Version="$(DotNetCoreCAPPackageVersion)" />
+		<PackageReference Include="DotNetCore.CAP.SqlServer" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftPackageVersion)">
 			<PrivateAssets>all</PrivateAssets>
@@ -32,7 +32,7 @@
 		<PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Identity.HttpApi.Client" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Http.Client.IdentityModel.Web" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
@@ -68,6 +68,10 @@
 		<ProjectReference Include="..\..\modules\platform\LINGYUN.Platform.Theme.VueVbenAdmin\LINGYUN.Platform.Theme.VueVbenAdmin.csproj" />
 		<ProjectReference Include="..\..\modules\saas\LINGYUN.Abp.Saas.EntityFrameworkCore\LINGYUN.Abp.Saas.EntityFrameworkCore.csproj" />
 		<ProjectReference Include="..\..\modules\tenants\LINGYUN.Abp.MultiTenancy\LINGYUN.Abp.MultiTenancy.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
 </Project>

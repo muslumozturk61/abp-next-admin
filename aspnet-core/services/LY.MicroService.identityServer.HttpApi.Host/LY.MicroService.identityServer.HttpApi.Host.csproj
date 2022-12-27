@@ -16,7 +16,7 @@
 	<ItemGroup>
 		<PackageReference Include="AgileConfig.Client" Version="$(AgileConfigClientPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.Dashboard" Version="$(DotNetCoreCAPPackageVersion)" />
-		<PackageReference Include="DotNetCore.CAP.MySql" Version="$(DotNetCoreCAPPackageVersion)" />
+		<PackageReference Include="DotNetCore.CAP.SqlServer" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="$(DotNetCoreCAPPackageVersion)" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftPackageVersion)">
 			<PrivateAssets>all</PrivateAssets>
@@ -37,7 +37,7 @@
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="$(VoloAbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(VoloAbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Account.Application" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(VoloAbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />

@@ -54,7 +54,7 @@ public class TenantSynchronizer :
                 await DbSchemaMigrator.MigrateAsync<PlatformManagementMigrationsDbContext>(
                     (connectionString, builder) =>
                     {
-                        builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                        builder.UseSqlServer(connectionString);
 
                         return new PlatformManagementMigrationsDbContext(builder.Options);
                     });
